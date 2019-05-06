@@ -49,7 +49,7 @@ Status InsertElem(SqList *L,int i,Elemtype e)
 	Elemtype *q=&L->elem[L->length-1];
 	for( ;q>p;q--)
 	{
-		*q=*(q-1);
+		*(q+1)=*q;
 	}
 	*p=e;
 	(L->length)++;
