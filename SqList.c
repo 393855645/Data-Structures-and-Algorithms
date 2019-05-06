@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
-#define INIT_SIZE 10           //biao chang
-#define INCREMENT_SIZE 5       //zeng liang
+#define INIT_SIZE 10           //表长
+#define INCREMENT_SIZE 5       //增量
 #define TRUE 1
 #define FALSE 0
 #define OK 1
@@ -10,7 +10,7 @@
 typedef int Elemtype;
 typedef int Status;
 
-typedef struct
+typedef struct              //表首地址，当前所在位置，表总大小
 {
 	Elemtype *elem;
 	int length;
@@ -19,7 +19,7 @@ typedef struct
 
 Status InitList(SqList *L)
 {
-	L->elem=(Elemtype *)malloc(INIT_SIZE*sizeof(Elemtype));
+	L->elem=(Elemtype *)malloc(INIT_SIZE*sizeof(Elemtype));   //分配内存为整个表的大小
 	if(!L->elem)
 	{
 		return ERROR;
