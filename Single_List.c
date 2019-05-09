@@ -10,16 +10,16 @@ typedef int ElemType;
 typedef int Status;
 
 
-typedef struct LNode 
+typedef struct LNode             //节点数据，下一个节点地址
 {
 	ElemType data;
 	struct LNode *next;
 }LNode,*LinkList;
 
 
-void InitList(LinkList *L)
+void InitList(LinkList *L)              //二级指针，L为头指针，*L为头结点
 {
-	*L=(LinkList) malloc(sizeof(LNode));
+	*L=(LinkList) malloc(sizeof(LNode));     //头结点（节点0），分配一个节点大小
 	if(!L)
 	{
 		exit(OVERFLOW);
