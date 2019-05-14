@@ -44,7 +44,7 @@ Status IsEmpty(LinkQueue Q)
 }
 
 
-Status EnQueue(LinkQueue *Q,QElemType e)
+Status EnQueue(LinkQueue *Q,QElemType e)        //队尾添加
 {
 	QueuePtr p=(QueuePtr) malloc(sizeof(QNode));
 	if(!p)
@@ -53,8 +53,8 @@ Status EnQueue(LinkQueue *Q,QElemType e)
 	}
 	p->data=e;
 	p->next=NULL;
-	Q->rear->next=p;
-	Q->rear=p;
+	Q->rear->next=p;                  //挂载到队尾
+	Q->rear=p;                        //队尾跟上
 }
 
 
@@ -82,7 +82,7 @@ Status GetLength(LinkQueue Q)
 }
 
 
-Status DeQueue(LinkQueue *Q,QElemType *e)
+Status DeQueue(LinkQueue *Q,QElemType *e)        //只能在队头删除，返回删除的值
 {
 	QueuePtr p;
 	if(Q->front==Q->rear)
