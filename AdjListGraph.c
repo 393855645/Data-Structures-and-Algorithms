@@ -9,27 +9,27 @@
 #define MAX_NUM 20
 typedef int Status;
 typedef int QElemType;
-typedef char VexType;               //vertex
+typedef char VexType;               //vertex顶点
 
 
-typedef struct EdgeNode
+typedef struct EdgeNode             //邻接表的边节点，包括顶点数据和指向下一个边的指针
 {
 	int adjvex;
 	struct EdgeNode *next;
 }EdgeNode,*EdgeLink;
 
 
-typedef struct VexNode
+typedef struct VexNode              //邻接表的头节，包括顶点数据和指向第一个边的指针
 {
 	VexType data;
 	EdgeNode *firstEdge;
 }VexNode,AdjList[MAX_NUM];
 
-typedef struct
+typedef struct                       
 {
-	AdjList adjList;
+	AdjList adjList;               
 	int vexNum,edgeNum;          
-}ALGraph;                          //Adjacency List Graph
+}ALGraph;                          //Adjacency List Graph   
 
 
 Status CreatGraph(ALGraph *G)
@@ -57,12 +57,12 @@ Status CreatGraph(ALGraph *G)
 		scanf("%d",&i);
 		scanf("%d",&j);
 		
-		e=(EdgeLink) malloc(sizeof(EdgeNode));
+		e=(EdgeLink) malloc(sizeof(EdgeNode));      //将e插入到头节点和第一个节点之间，所以输出遍历结果时，后输入的边会先遍历
 		e->adjvex=j;
 		e->next=G->adjList[i].firstEdge;
 		G->adjList[i].firstEdge=e;
 
-		e=(EdgeLink) malloc(sizeof(EdgeNode));
+		e=(EdgeLink) malloc(sizeof(EdgeNode));     //同上
 		e->adjvex=i;
 		e->next=G->adjList[j].firstEdge;
 		G->adjList[j].firstEdge=e;
@@ -80,7 +80,7 @@ void DFS(ALGraph G,int i)
 	visited[i]=TRUE;
 	printf("%c ",G.adjList[i].data);
 	p=G.adjList[i].firstEdge;
-	while(p)
+	while(p)                              //这条链没遍历完就一直遍历
 	{
 		if(!visited[p->adjvex])
 		{
@@ -89,7 +89,7 @@ void DFS(ALGraph G,int i)
 		p=p->next;
 	}
 }
-Status DFSTraverse(ALGraph G)
+Status DFSTraverse(ALGraph G)                    //深度优先搜索遍历
 {
 	int i;
 	for(i=0;i<MAX_NUM;i++)
@@ -115,8 +115,8 @@ typedef struct QNode
 }QNode,*QueuePtr;
 
 
-typedef struct 
-{
+typedef struct                       //利用队列来广度遍历，将同一层的顶点输入到队列中，一个一个出队，遍历每一个出队的顶点的所有边，
+{                                    //已遍历的跳过，未遍历的继续入队
 	QueuePtr front;
 	QueuePtr rear;
 }LinkQueue;
