@@ -14,7 +14,7 @@ typedef char VexType;               //vertex顶点
 
 typedef struct EdgeNode             //邻接表的边节点，包括顶点数据和指向下一个边的指针
 {
-	int adjvex;
+	int adjvex;                  //Adjacency 邻接
 	struct EdgeNode *next;
 }EdgeNode,*EdgeLink;
 
