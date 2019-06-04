@@ -2,7 +2,7 @@
 #include<stdlib.h>
 
 
-int Partition(int *array,int low,int high)
+int Partition(int *array,int low,int high)                     //选定枢轴，小的放在左边，大的放在右边，返回枢轴位置
 {
 	int pivotkey=array[low];
 	while(low<high)
